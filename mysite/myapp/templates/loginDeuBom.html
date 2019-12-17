@@ -1,0 +1,12 @@
+<p>voce esta com sorte, <b>{{ usuario }}</b>. Seu login deu certo!</p>
+
+<p>alterar senha:</p>
+<form method="post", action=" {% url 'alterarSenha' %} ">
+        {% csrf_token %}
+        <input type="text" name="usuario" id="usuario" placeholder="usuario"/>
+        <input type="text" name="senha" id="senha" placeholder="senha"/>
+        <input type="text" name="novasenha" id="novasenha" placeholder="nova senha"/>
+        <button type="submit">Alterar Senha!</button>
+</form>
+
+<a href='login'><button>Logout!</button></a>

@@ -1,0 +1,15 @@
+<p>Login</p>
+<form method="post", action=" {% url 'loginSubmit' %} ">
+    {% csrf_token %}
+    <input type="text" name="usuario" id="usuario" placeholder="usuario"/>
+    <input type="text" name="senha" id="senha" placeholder="senha"/>
+    <button type="submit">Login!</button>
+</form>
+
+<p>Criar usuario</p>
+<form method="post", action=" {% url 'criarUsuario' %} ">
+    {% csrf_token %}
+    <input type="text" name="usuario" id="usuario" placeholder="usuario"/>
+    <input type="text" name="senha" id="senha" placeholder="senha"/>
+    <button type="submit">Criar Usuario!</button>
+</form>
