@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Usuario
+from django.utils.datastructures import MultiValueDictKeyError
+#from .forms import UploadFileForm
 
 def helloApp(request):
     return render(request,'helloApp.html')
@@ -10,17 +12,24 @@ def login(request):
 def loginSubmit(request):
     objusuario = getUsuario(request)
     if(objusuario):
-        return render(request,'loginDeuBom.html',{ 'usuario': objusuario.usuario })
+        return render(request,'loginDeuBom.html',{ 'usuario': objusuario.usuario, 'txtFile': getTxtFile(objusuario) })
     else:
         return render(request,'loginFalhou.html')
 
-def alterarSenha(request):
+def usarServicos(request):
     objusuario = getUsuario(request)
     vnovasenha = request.POST['novasenha']
+
     if(objusuario):
-        objusuario.senha = vnovasenha
+        if(vnovasenha != ''):
+            objusuario.senha = vnovasenha
+        try:
+            vfile = request.FILES['file']
+            objusuario.file = vfile
+        except MultiValueDictKeyError:
+            pass
         objusuario.save()
-        return render(request, 'alterouSenha.html', { 'usuario': objusuario.usuario })
+        return render(request, 'loginDeuBom.html', { 'usuario': objusuario.usuario, 'txtFile': getTxtFile(objusuario) })
     else:
         return render(request, 'loginFalhou.html')
 
@@ -44,3 +53,14 @@ def getUsuario(request):
         usuario = listUsers[0]
     return usuario
 
+def getTxtFile(usuario):
+    txt = ''
+    try:
+        file = open(usuario.file.name, 'r') 
+        txt = file.read()
+    except IOError:
+        pass
+    except UnboundLocalError:
+        pass
+    
+    return txt

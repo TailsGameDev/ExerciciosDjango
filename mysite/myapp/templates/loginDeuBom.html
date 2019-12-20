@@ -1,12 +1,23 @@
-<p>voce esta com sorte, <b>{{ usuario }}</b>. Seu login deu certo!</p>
+<p>Você esta com sorte, <b>{{ usuario }}</b>. Seu login deu certo!</p>
 
-<p>alterar senha:</p>
-<form method="post", action=" {% url 'alterarSenha' %} ">
+<p>Digite seu usuário e senha para utilizar os serviços:</p>
+<form method="post", action=" {% url 'usarServicos' %} ", enctype="multipart/form-data">
         {% csrf_token %}
         <input type="text" name="usuario" id="usuario" placeholder="usuario"/>
         <input type="text" name="senha" id="senha" placeholder="senha"/>
+        <br>
+        <br>
+        <p>Serviço de trocar a senha:</p>
         <input type="text" name="novasenha" id="novasenha" placeholder="nova senha"/>
-        <button type="submit">Alterar Senha!</button>
+        <br>
+        <p>Serviço de fazer upload de arquivo:</p>
+        <input type="file" name="file" id="file" placeholder="file">
+        <br>
+        <br>
+        <button type="submit">Usar serviços!</button>  <= clique aqui para usar serviços
 </form>
+
+<p>O texto do último arquivo que você fez upload é:</p>
+<p>{{ txtFile }}</p>
 
 <a href='login'><button>Logout!</button></a>
