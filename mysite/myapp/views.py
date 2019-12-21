@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from .models import Usuario
 from django.utils.datastructures import MultiValueDictKeyError
-#from .forms import UploadFileForm
+import json
+from django.http import JsonResponse
 
 def helloApp(request):
     return render(request,'helloApp.html')
@@ -64,3 +65,6 @@ def getTxtFile(usuario):
         pass
     
     return txt
+
+def getUsuarios(request):
+    return JsonResponse(list(map(Usuario.getDict,Usuario.objects.all())), safe=False)

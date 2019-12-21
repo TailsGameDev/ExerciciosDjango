@@ -1,3 +1,5 @@
 .vscode
 venv
 uploadedFiles
+mysite/mysite/__pycache__/
+mysite/myapp/__pycache__/

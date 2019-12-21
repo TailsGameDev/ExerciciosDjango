@@ -7,3 +7,6 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.usuario
+    
+    def getDict(self):
+        return {'usuario': self.usuario, 'file': self.file.name}
