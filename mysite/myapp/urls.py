@@ -8,5 +8,5 @@ urlpatterns = [
     path('loginSubmit', loginSubmit, name='loginSubmit'),
     path('usarServicos', usarServicos, name='usarServicos'),
     path('criarUsuario', criarUsuario, name='criarUsuario'),
-    path('getUsuarios', getUsuarios, name='getUsuarios')
+    path('getUsuarios', getUsuarios, name='getUsuarios'),
 ]
