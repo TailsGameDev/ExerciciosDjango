@@ -1,0 +1,9 @@
+<p>faça upload de um arquivo e obtenha o seu resumo criptográfico!</p>
+
+<form method="post", action=" {% url '_1_resumoCriptografico' %} ", enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="file" id="file" placeholder="file">
+    <br>
+    <br>
+    <button type="submit">Obter resumo criptográfico!</button>
+</form>
