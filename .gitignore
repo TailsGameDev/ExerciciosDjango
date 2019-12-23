@@ -3,3 +3,4 @@ venv
 uploadedFiles
 mysite/mysite/__pycache__/
 mysite/myapp/__pycache__/
+mysite/lsec/__pycache__/

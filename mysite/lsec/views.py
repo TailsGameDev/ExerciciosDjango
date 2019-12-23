@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from hashlib import sha256
 import os
+from .rsaKeys import getKeys
+
+def _2_webServiceUI(request):
+    return render(request, '_2_webServiceUI.html')
+
+def _2_rsaKeys(request):
+    return render(request, 'rsaKeys.html', getKeys())
 
 def _1_webServiceUI(request):
     return render(request, '_1_webServiceUI.html')

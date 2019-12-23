@@ -1,0 +1,8 @@
+<p>Escolha o tamanho e gere as chaves!</p>
+<form method="post", action=" {% url '_2_rsaKeys' %} ", enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="textbox" name="size" id="size" placeholder="size">
+    <br>
+    <br>
+    <button type="submit">gerar chaves!</button>
+</form>
